@@ -1,0 +1,13 @@
+<% include partials/header %>
+
+<h1>Add a new strain</h1>
+
+<form action="/strains" method="POST">
+  <input type="text" name="name" placeholder="Name">
+  <input type="text" name="image" placeholder="Image URL">
+  <button type="submit">Submit</button>
+</form>
+
+<a href="/strains">Go back to strains page</a>
+
+<% include partials/footer %>
