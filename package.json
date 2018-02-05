@@ -1,0 +1,11 @@
+{
+  "name": "strain_review",
+  "version": "1.0.0",
+  "description": "A review application for various strains of cannabis",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kaden Zipfel",
+  "license": "ISC"
+}
