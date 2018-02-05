@@ -1,0 +1,8 @@
+<h1>Strains Page</h1>
+
+<% strains.forEach(function(strain){ %>
+  <div>
+    <h4><%= strain.name %></h4>
+    <img src="<%= strain.image %>">
+  </div>
+<% }); %>
