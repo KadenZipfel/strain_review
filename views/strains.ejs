@@ -1,3 +1,5 @@
+<% include partials/header %>
+
 <h1>Strains Page</h1>
 
 <% strains.forEach(function(strain){ %>
@@ -6,3 +8,5 @@
     <img src="<%= strain.image %>">
   </div>
 <% }); %>
+
+<% include partials/footer %>
