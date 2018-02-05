@@ -1,14 +1,29 @@
 <% include partials/header %>
 
-<h1>Strains Page</h1>
-
-<a href="/strains/new">Add New Strain</a>
-
-<% strains.forEach(function(strain){ %>
-  <div>
-    <h4><%= strain.name %></h4>
-    <img src="<%= strain.image %>">
+<div class="container">
+  <header class="jumbotron">
+    <div class="container">
+      <h1>Welcome to CannaReviews</h1>
+    <p>View our most popular strains</p>
+    <p>
+      <a class="btn btn-primary" href="/strains/new">Add New Strain</a>
+    </p>
+    </div>
+  </header>
+  
+  <div class="row text-center" style="display: flex; flex-wrap: wrap;">
+    <% strains.forEach(function(strain){ %>
+      <div class="col-md-3 col-sm-6">
+        <div class="thumbnail">
+          <img src="<%= strain.image %>">
+          <div class="caption">
+            <h4><%= strain.name %></h4>
+          </div>
+        </div>
+      </div>
+    <% }); %>
   </div>
-<% }); %>
+</div>
+  
 
 <% include partials/footer %>
