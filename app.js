@@ -1,24 +1,45 @@
 var express    = require("express"),
     bodyParser = require("body-parser"),
+    mongoose   = require("mongoose"),
     app        = express();
     
-    
+mongoose.connect("mongodb://localhost/cannareviews");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
-var strains = [
-    {name: "OG Kush", image: "https://images.weedmaps.com/photos/products/000/026/246/large/36827_supremeogkush_supremeog_2_01.jpg"},
-    {name: "Purple Kush", image: "https://buyweedonlinewithbitcoins.com/wp-content/uploads/2016/12/Purple-Kush.jpg"},
-    {name: "Master Kush", image: "http://cdn.shopify.com/s/files/1/1061/0012/products/master_kush-Solo_Flower_grande.jpg?v=1479965381"}
-  ]
+//Schema Setup
+var strainSchema = new mongoose.Schema({
+  name: String,
+  image: String
+});
+
+var Strain = mongoose.model("Strain", strainSchema);
+
+// Strain.create({
+//   name: "Purple Kush", 
+//   image: "https://buyweedonlinewithbitcoins.com/wp-content/uploads/2016/12/Purple-Kush.jpg"
+// }, function(err, strain){
+//   if(err){
+//     console.log(err);
+//   } else {
+//     console.log("New strain: ");
+//     console.log(strain);
+//   }
+// });
     
 app.get("/", function(req, res){
   res.render("landing");
 });
 
 app.get("/strains", function(req, res){
-  
-  res.render("strains", {strains:strains});
+  // Get all strains from DB
+  Strain.find({}, function(err, allStrains){
+    if(err){
+      console.log(err);
+    } else {
+      res.render("strains", {strains:allStrains});
+    }
+  });
 });
 
 app.post("/strains", function(req, res){
@@ -26,9 +47,15 @@ app.post("/strains", function(req, res){
   var name = req.body.name;
   var image = req.body.image;
   var newStrain = {name: name, image: image};
-  strains.push(newStrain)
-  //Redirect back to strains page
-  res.redirect("/strains");
+  //Create a new strain and save to DB
+  Strain.create(newStrain, function(err, newlyCreated){
+    if(err){
+      console.log(err);
+    } else {
+      //Redirect back to strains page
+      res.redirect("/strains");
+    }
+  });
 });
 
 app.get("/strains/new", function(req, res){
