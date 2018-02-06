@@ -1,13 +1,21 @@
 <% include partials/header %>
 
-<h1>Add a new strain</h1>
-
-<form action="/strains" method="POST">
-  <input type="text" name="name" placeholder="Name">
-  <input type="text" name="image" placeholder="Image URL">
-  <button type="submit">Submit</button>
-</form>
-
-<a href="/strains">Go back to strains page</a>
+<div class="container">
+  <h1 style="text-align: center;">Add a new strain</h1>
+  <div style="width: 30%; margin: 25px auto;">
+    <form action="/strains" method="POST">
+      <div class="form-group">
+        <input class="form-control" type="text" name="name" placeholder="Name">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="text" name="image" placeholder="Image URL">
+      </div>
+      <div class="form-group">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+      </div>
+    </form>
+    <a href="/strains">Go back to strains page</a>
+  </div>
+</div>
 
 <% include partials/footer %>
