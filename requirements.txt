@@ -1,0 +1,4 @@
+* User authentication for admin only
+* New strain page and option for logged in admin only
+* Sidebar in show page with similar strains
+* Option for Indica/Sativa/Hybrid

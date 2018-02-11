@@ -1,19 +1,41 @@
 <% include ../partials/header %>
 
-<h1><%= strain.name %></h1>
-
-<img src="<%= strain.image %>">
-
-<p><%= strain.description%></p>
-
-<p>
-  <a class="btn btn-success" href="/strains/<%= strain._id %>/comments/new">Add New Comment</a>
-</p>
-
-<% strain.comments.forEach(function(comment){ %>
-  <p>
-    <strong><%= comment.author %></strong> - <%= comment.text %>
-  </p>
-<% }); %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <p class="lead">CannaReview</p>
+      <div class="list-group">
+        <p>Other Strains You May Like:</p>
+        <li class="list-group-item">Strain 1</li>
+        <li class="list-group-item">Strain 2</li>
+        <li class="list-group-item">Strain 3</li>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="thumbnail">
+        <img class="img-responsive" src="<%= strain.image %>">
+        <div class="caption">
+          <h4 class="pull-right">$12.00/Gram</h4>
+          <h4><a><%= strain.name %></a></h1>
+          <p><%= strain.description%></p>
+        </div>
+      </div>
+      <div class="well">
+        <div class="text-right">
+          <a class="btn btn-success" href="/strains/<%= strain._id %>/comments/new">Add New Comment</a>
+        </div>
+        <hr>
+          <% strain.comments.forEach(function(comment){ %>
+          <div class="row">
+            <div class="col-md-12">
+              <strong><%= comment.author %></strong>
+              <span class="pull-right">10 days ago</span>
+              <p><%= comment.text %></p>
+            </div>
+          </div>
+          <% }); %>
+      </div>
+    </div>
+  </div>
 
 <% include ../partials/footer %>
