@@ -1,33 +1,15 @@
 var express    = require("express"),
     bodyParser = require("body-parser"),
     mongoose   = require("mongoose"),
+    Strain     = require("./models/strain"),
+    seedDB     = require("./seeds"),
+    Comment    = require("./models/comment"),
     app        = express();
     
 mongoose.connect("mongodb://localhost/cannareviews");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
-
-//Schema Setup
-var strainSchema = new mongoose.Schema({
-  name: String,
-  image: String,
-  description: String
-});
-
-var Strain = mongoose.model("Strain", strainSchema);
-
-// Strain.create({
-//   name: "Purple Kush", 
-//   image: "https://buyweedonlinewithbitcoins.com/wp-content/uploads/2016/12/Purple-Kush.jpg",
-//   description: "A very sedative strain with great pain relief."
-// }, function(err, strain){
-//   if(err){
-//     console.log(err);
-//   } else {
-//     console.log("New strain: ");
-//     console.log(strain);
-//   }
-// });
+seedDB();
     
 app.get("/", function(req, res){
   res.render("landing");
@@ -40,7 +22,7 @@ app.get("/strains", function(req, res){
     if(err){
       console.log(err);
     } else {
-      res.render("index", {strains:allStrains});
+      res.render("strains/index", {strains:allStrains});
     }
   });
 });
@@ -65,22 +47,61 @@ app.post("/strains", function(req, res){
 
 // New Route
 app.get("/strains/new", function(req, res){
-  res.render("new");
+  res.render("strains/new");
 });
 
 // Show Route
 app.get("/strains/:id", function(req, res){
   //Find the strain with provided ID
-  Strain.findById(req.params.id, function(err, foundStrain){
+  Strain.findById(req.params.id).populate("comments").exec(function(err, foundStrain){
     if(err) {
       console.log(err);
     } else {
+      console.log(foundStrain);
       //Render show template with that strain
-      res.render("show", {strain: foundStrain});
+      res.render("strains/show", {strain: foundStrain});
     }
   });
 });
-    
+
+// ===============
+// COMMENTS ROUTES
+// ===============
+
+app.get("/strains/:id/comments/new", function(req, res) {
+  // Find strain by id
+  Strain.findById(req.params.id, function(err, strain){
+    if(err){
+      console.log(err);
+    } else {
+      res.render("comments/new", {strain: strain});
+    }
+  });
+});
+
+app.post("/strains/:id/comments", function(req, res){
+  // Look up strain using ID
+  Strain.findById(req.params.id, function(err, strain){
+    if(err){
+      console.log(err);
+      res.redirect("/strains");
+    } else {
+      // Create new comment
+      Comment.create(req.body.comment, function(err, comment){
+        if(err){
+          console.log(err);
+        } else {
+          strain.comments.push(comment._id);
+          strain.save();
+          res.redirect("/strains/" + strain._id);
+        }
+      });
+      // Connect new comment to strain
+      // Redirect to show page
+    }
+  });
+});
+
 app.listen(process.env.PORT, process.env.IP, function(){
    console.log("Server is running."); 
 });
