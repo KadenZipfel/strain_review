@@ -14,6 +14,19 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 seedDB();
+
+// Passport config
+app.use(require("express-session")({
+  secret: "This is my secret",
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
     
 app.get("/", function(req, res){
   res.render("landing");
@@ -103,6 +116,29 @@ app.post("/strains/:id/comments", function(req, res){
       // Connect new comment to strain
       // Redirect to show page
     }
+  });
+});
+
+// ===========
+// Auth routes
+// ===========
+
+// Register form
+app.get("/register", function(req, res){
+  res.render("register");
+});
+
+// Handle sign up logic
+app.post("/register", function(req, res){
+  var newUser = new User({username: req.body.username});
+  User.register(newUser, req.body.password, function(err, user){
+    if(err){
+      console.log(err);
+      return res.render("register");
+    }
+    passport.authenticate("local")(req, res, function(){
+      res.redirect("/strains");
+    });
   });
 });
 
