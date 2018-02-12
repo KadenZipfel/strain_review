@@ -1,10 +1,13 @@
-var express    = require("express"),
-    bodyParser = require("body-parser"),
-    mongoose   = require("mongoose"),
-    Strain     = require("./models/strain"),
-    seedDB     = require("./seeds"),
-    Comment    = require("./models/comment"),
-    app        = express();
+var express       = require("express"),
+    bodyParser    = require("body-parser"),
+    mongoose      = require("mongoose"),
+    Strain        = require("./models/strain"),
+    seedDB        = require("./seeds"),
+    Comment       = require("./models/comment"),
+    passport      = require("passport"),
+    LocalStrategy = require("passport-local"),
+    User          = require("./models/user"),
+    app           = express();
     
 mongoose.connect("mongodb://localhost/cannareviews");
 app.use(bodyParser.urlencoded({extended: true}));
