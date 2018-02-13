@@ -28,8 +28,14 @@ router.post("/", isLoggedIn, function(req, res){
         if(err){
           console.log(err);
         } else {
+          // Add username and id to comment
+          comment.author.id = req.user._id;
+          comment.author.username = req.user.username;
+          // Save comment
+          comment.save();
           strain.comments.push(comment._id);
           strain.save();
+          console.log(comment);
           res.redirect("/strains/" + strain._id);
         }
       });

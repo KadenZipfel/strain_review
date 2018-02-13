@@ -23,40 +23,40 @@ var data = [
 function seedDB(){
    //Remove all strains
    Strain.remove({}, function(err){
-        if(err){
-            console.log(err);
-        }
-        console.log("removed strains!");
-        Comment.remove({}, function(err) {
-            if(err){
-                console.log(err);
-            }
-            console.log("removed comments!");
-             //add a few strains
-            data.forEach(function(seed){
-                Strain.create(seed, function(err, strain){
-                    if(err){
-                        console.log(err)
-                    } else {
-                        console.log("added a strain");
-                        //create a comment
-                        Comment.create(
-                            {
-                                text: "This stuff is the bomb! Never smoking anything else!",
-                                author: "High Guy"
-                            }, function(err, comment){
-                                if(err){
-                                    console.log(err);
-                                } else {
-                                    strain.comments.push(comment._id);
-                                    strain.save();
-                                    console.log("Created new comment");
-                                }
-                            });
-                    }
-                });
-            });
-        });
+        // if(err){
+        //     console.log(err);
+        // }
+        // console.log("removed strains!");
+        // Comment.remove({}, function(err) {
+        //     if(err){
+        //         console.log(err);
+        //     }
+        //     console.log("removed comments!");
+        //      //add a few strains
+        //     data.forEach(function(seed){
+        //         Strain.create(seed, function(err, strain){
+        //             if(err){
+        //                 console.log(err)
+        //             } else {
+        //                 console.log("added a strain");
+        //                 //create a comment
+        //                 Comment.create(
+        //                     {
+        //                         text: "This stuff is the bomb! Never smoking anything else!",
+        //                         author: "High Guy"
+        //                     }, function(err, comment){
+        //                         if(err){
+        //                             console.log(err);
+        //                         } else {
+        //                             strain.comments.push(comment._id);
+        //                             strain.save();
+        //                             console.log("Created new comment");
+        //                         }
+        //                     });
+        //             }
+        //         });
+        //     });
+        // });
     }); 
     //add a few comments
 }
