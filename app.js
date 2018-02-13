@@ -44,8 +44,13 @@ app.get("/strains", function(req, res){
   });
 });
 
+// New Route
+app.get("/strains/new", isLoggedIn, function(req, res){
+  res.render("strains/new");
+});
+
 // Create Route
-app.post("/strains", function(req, res){
+app.post("/strains", isLoggedIn, function(req, res){
   //Get data from form and add to strains array
   var name = req.body.name;
   var image = req.body.image;
@@ -60,11 +65,6 @@ app.post("/strains", function(req, res){
       res.redirect("/strains");
     }
   });
-});
-
-// New Route
-app.get("/strains/new", function(req, res){
-  res.render("strains/new");
 });
 
 // Show Route
@@ -85,7 +85,7 @@ app.get("/strains/:id", function(req, res){
 // COMMENTS ROUTES
 // ===============
 
-app.get("/strains/:id/comments/new", function(req, res) {
+app.get("/strains/:id/comments/new", isLoggedIn, function(req, res) {
   // Find strain by id
   Strain.findById(req.params.id, function(err, strain){
     if(err){
@@ -96,7 +96,7 @@ app.get("/strains/:id/comments/new", function(req, res) {
   });
 });
 
-app.post("/strains/:id/comments", function(req, res){
+app.post("/strains/:id/comments", isLoggedIn, function(req, res){
   // Look up strain using ID
   Strain.findById(req.params.id, function(err, strain){
     if(err){
@@ -154,6 +154,19 @@ app.post("/login", passport.authenticate("local", {
 }), function(req, res){
   
 });
+
+// Logout route
+app.get("/logout", function(req, res){
+  req.logout();
+  res.redirect("/strains");
+});
+
+function isLoggedIn(req, res, next){
+  if(req.isAuthenticated()){
+    return next();
+  }
+  res.redirect("/login");
+}
 
 app.listen(process.env.PORT, process.env.IP, function(){
    console.log("Server is running."); 
