@@ -80,6 +80,17 @@ router.put("/:id", function(req, res){
   // Redirect to show page
 });
 
+// Destroy strain route
+router.delete("/:id", function(req, res){
+  Strain.findByIdAndRemove(req.params.id, function(err){
+    if(err){
+      res.redirect("/strains");
+    } else {
+      res.redirect("/strains");
+    }
+  });
+});
+
 function isLoggedIn(req, res, next){
   if(req.isAuthenticated()){
     return next();

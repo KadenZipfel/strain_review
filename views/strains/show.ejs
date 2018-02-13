@@ -21,7 +21,10 @@
           <p>
             <em>Submitted by: <%= strain.author.username %></em>
           </p>
-          <a class="btn btn-warning" href="/strains/<%= strain._id %>/edit">Edit</a>
+          <a class="btn btn-warning btn-xs" href="/strains/<%= strain._id %>/edit">Edit</a>
+          <form id="delete-form" action="/strains/<%= strain._id %>?_method=DELETE" method="POST">
+            <button class="btn btn-danger btn-xs">Delete</button>
+          </form>
         </div>
       </div>
       <div class="well">
