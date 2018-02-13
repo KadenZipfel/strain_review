@@ -1,13 +1,14 @@
-var express       = require("express"),
-    bodyParser    = require("body-parser"),
-    mongoose      = require("mongoose"),
-    Strain        = require("./models/strain"),
-    seedDB        = require("./seeds"),
-    Comment       = require("./models/comment"),
-    passport      = require("passport"),
-    LocalStrategy = require("passport-local"),
-    User          = require("./models/user"),
-    app           = express();
+var express        = require("express"),
+    bodyParser     = require("body-parser"),
+    mongoose       = require("mongoose"),
+    Strain         = require("./models/strain"),
+    seedDB         = require("./seeds"),
+    Comment        = require("./models/comment"),
+    passport       = require("passport"),
+    LocalStrategy  = require("passport-local"),
+    User           = require("./models/user"),
+    methodOverride = require("method-override"),
+    app            = express();
     
 // Requiring routes
 var commentRoutes = require("./routes/comments"),
@@ -18,6 +19,7 @@ mongoose.connect("mongodb://localhost/cannareviews");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
+app.use(methodOverride("_method"));
 
 // Seed the DB
 // seedDB();

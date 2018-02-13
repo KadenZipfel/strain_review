@@ -56,6 +56,30 @@ router.get("/:id", function(req, res){
   });
 });
 
+// Edit strain route
+router.get("/:id/edit", function(req, res){
+  Strain.findById(req.params.id, function(err, foundStrain){
+    if(err){
+      res.redirect("/strains");
+    } else {
+      res.render("strains/edit", {strain: foundStrain});
+    }
+  });
+});
+
+// Update strain route
+router.put("/:id", function(req, res){
+  // Find and update the correct strain
+  Strain.findByIdAndUpdate(req.params.id, req.body.strain, function(err, updatedStrain){
+    if(err){
+      res.redirect("/strains");
+    } else {
+      res.redirect("/strains/" + req.params.id);
+    }
+  });
+  // Redirect to show page
+});
+
 function isLoggedIn(req, res, next){
   if(req.isAuthenticated()){
     return next();

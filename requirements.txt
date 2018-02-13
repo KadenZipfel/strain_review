@@ -1,4 +1,6 @@
-* User authentication for admin only
+* User authentication for admin only - maybe
 * New strain page and option for logged in admin only
-* Sidebar in show page with similar strains
+* Rating option
+* Sidebar in show page with similar strains - based on Indica/Sativa and rating
 * Option for Indica/Sativa/Hybrid
+  * Effect options based on Indica/Sativa - Users can select effects
