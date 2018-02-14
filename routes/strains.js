@@ -57,18 +57,14 @@ router.get("/:id", function(req, res){
 });
 
 // Edit strain route
-router.get("/:id/edit", function(req, res){
+router.get("/:id/edit", checkOwnership, function(req, res){
   Strain.findById(req.params.id, function(err, foundStrain){
-    if(err){
-      res.redirect("/strains");
-    } else {
-      res.render("strains/edit", {strain: foundStrain});
-    }
+    res.render("strains/edit", {strain: foundStrain});
   });
 });
 
 // Update strain route
-router.put("/:id", function(req, res){
+router.put("/:id", checkOwnership, function(req, res){
   // Find and update the correct strain
   Strain.findByIdAndUpdate(req.params.id, req.body.strain, function(err, updatedStrain){
     if(err){
@@ -81,7 +77,7 @@ router.put("/:id", function(req, res){
 });
 
 // Destroy strain route
-router.delete("/:id", function(req, res){
+router.delete("/:id", checkOwnership, function(req, res){
   Strain.findByIdAndRemove(req.params.id, function(err){
     if(err){
       res.redirect("/strains");
@@ -96,6 +92,26 @@ function isLoggedIn(req, res, next){
     return next();
   }
   res.redirect("/login");
+}
+
+function checkOwnership(req, res, next) {
+  // Is user logged in
+  if(req.isAuthenticated()){
+    Strain.findById(req.params.id, function(err, foundStrain){
+      if(err){
+        res.redirect("back");
+      } else {
+        // Does user own the strain
+        if(foundStrain.author.id.equals(req.user._id)) {
+          next();
+        } else {
+          res.redirect("back");
+        }
+      }
+    });
+  } else {
+    res.redirect("back");
+  }
 }
 
 module.exports = router;
