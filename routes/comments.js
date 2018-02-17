@@ -1,10 +1,11 @@
-var express = require("express"),
-    Strain  = require("../models/strain"),
-    Comment = require("../models/comment"),
-    router  = express.Router({mergeParams: true});
+var express    = require("express"),
+    Strain     = require("../models/strain"),
+    Comment    = require("../models/comment"),
+    middleware = require("../middleware"),
+    router     = express.Router({mergeParams: true});
 
 // New comment form
-router.get("/new", isLoggedIn, function(req, res) {
+router.get("/new", middleware.isLoggedIn, function(req, res) {
   // Find strain by id
   Strain.findById(req.params.id, function(err, strain){
     if(err){
@@ -16,7 +17,7 @@ router.get("/new", isLoggedIn, function(req, res) {
 });
 
 // Comment post route
-router.post("/", isLoggedIn, function(req, res){
+router.post("/", middleware.isLoggedIn, function(req, res){
   // Look up strain using ID
   Strain.findById(req.params.id, function(err, strain){
     if(err){
@@ -46,7 +47,7 @@ router.post("/", isLoggedIn, function(req, res){
 });
 
 // Comment edit route
-router.get("/:comment_id/edit", checkCommentOwnership, function(req, res){
+router.get("/:comment_id/edit", middleware.checkCommentOwnership, function(req, res){
   Comment.findById(req.params.comment_id, function(err, foundComment){
     if(err){
       res.redirect("back");
@@ -57,7 +58,7 @@ router.get("/:comment_id/edit", checkCommentOwnership, function(req, res){
 });
 
 // Comment update route
-router.put("/:comment_id", checkCommentOwnership, function(req, res){
+router.put("/:comment_id", middleware.checkCommentOwnership, function(req, res){
   Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updatedComment){
     if(err){
       res.redirect("back");
@@ -68,7 +69,7 @@ router.put("/:comment_id", checkCommentOwnership, function(req, res){
 });
 
 // Comment destroy route
-router.delete("/:comment_id", checkCommentOwnership, function(req, res){
+router.delete("/:comment_id", middleware.checkCommentOwnership, function(req, res){
   Comment.findByIdAndRemove(req.params.comment_id, function(err){
     if(err){
       res.redirect("back");
@@ -77,32 +78,5 @@ router.delete("/:comment_id", checkCommentOwnership, function(req, res){
     }
   });
 });
-
-function checkCommentOwnership(req, res, next) {
-  // Is user logged in
-  if(req.isAuthenticated()){
-    Strain.findById(req.params.comment_id, function(err, foundComment){
-      if(err){
-        res.redirect("back");
-      } else {
-        // Does user own the comment?
-        if(foundComment.author.id.equals(req.user._id)) {
-          next();
-        } else {
-          res.redirect("back");
-        }
-      }
-    });
-  } else {
-    res.redirect("back");
-  }
-}
-
-function isLoggedIn(req, res, next){
-  if(req.isAuthenticated()){
-    return next();
-  }
-  res.redirect("/login");
-}
 
 module.exports = router;

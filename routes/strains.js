@@ -1,6 +1,7 @@
-var express = require("express"),
-    Strain  = require("../models/strain"),
-    router  = express.Router();
+var express    = require("express"),
+    Strain     = require("../models/strain"),
+    middleware = require("../middleware"),
+    router     = express.Router();
 
 // Index Route
 router.get("/", function(req, res){
@@ -15,12 +16,12 @@ router.get("/", function(req, res){
 });
 
 // New Route
-router.get("/new", isLoggedIn, function(req, res){
+router.get("/new", middleware.isLoggedIn, function(req, res){
   res.render("strains/new");
 });
 
 // Create Route
-router.post("/", isLoggedIn, function(req, res){
+router.post("/", middleware.isLoggedIn, function(req, res){
   //Get data from form and add to strains array
   var name = req.body.name;
   var image = req.body.image;
@@ -57,14 +58,14 @@ router.get("/:id", function(req, res){
 });
 
 // Edit strain route
-router.get("/:id/edit", checkOwnership, function(req, res){
+router.get("/:id/edit", middleware.checkOwnership, function(req, res){
   Strain.findById(req.params.id, function(err, foundStrain){
     res.render("strains/edit", {strain: foundStrain});
   });
 });
 
 // Update strain route
-router.put("/:id", checkOwnership, function(req, res){
+router.put("/:id", middleware.checkOwnership, function(req, res){
   // Find and update the correct strain
   Strain.findByIdAndUpdate(req.params.id, req.body.strain, function(err, updatedStrain){
     if(err){
@@ -77,7 +78,7 @@ router.put("/:id", checkOwnership, function(req, res){
 });
 
 // Destroy strain route
-router.delete("/:id", checkOwnership, function(req, res){
+router.delete("/:id", middleware.checkOwnership, function(req, res){
   Strain.findByIdAndRemove(req.params.id, function(err){
     if(err){
       res.redirect("/strains");
@@ -86,32 +87,5 @@ router.delete("/:id", checkOwnership, function(req, res){
     }
   });
 });
-
-function isLoggedIn(req, res, next){
-  if(req.isAuthenticated()){
-    return next();
-  }
-  res.redirect("/login");
-}
-
-function checkOwnership(req, res, next) {
-  // Is user logged in
-  if(req.isAuthenticated()){
-    Strain.findById(req.params.id, function(err, foundStrain){
-      if(err){
-        res.redirect("back");
-      } else {
-        // Does user own the strain
-        if(foundStrain.author.id.equals(req.user._id)) {
-          next();
-        } else {
-          res.redirect("back");
-        }
-      }
-    });
-  } else {
-    res.redirect("back");
-  }
-}
 
 module.exports = router;
