@@ -13,11 +13,13 @@ middlewareObj.checkOwnership = function(req, res, next) {
         if(foundStrain.author.id.equals(req.user._id)) {
           next();
         } else {
+          req.flash("error", "You do not have permission to do that.");
           res.redirect("back");
         }
       }
     });
   } else {
+    req.flash("error", "You must be logged in to do that.");
     res.redirect("back");
   }
 }
@@ -33,11 +35,13 @@ middlewareObj.checkCommentOwnership = function(req, res, next) {
         if(foundComment.author.id.equals(req.user._id)) {
           next();
         } else {
+          req.flash("error", "You do not have permission to do that.");
           res.redirect("back");
         }
       }
     });
   } else {
+    req.flash("error", "You must be logged in to do that.");
     res.redirect("back");
   }
 }
@@ -46,6 +50,7 @@ middlewareObj.isLoggedIn = function(req, res, next){
   if(req.isAuthenticated()){
     return next();
   }
+  req.flash("error", "You must be logged in to do that.");
   res.redirect("/login");
 }
 
