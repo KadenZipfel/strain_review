@@ -5,12 +5,12 @@ var express  = require("express"),
 
 // Landing Route
 router.get("/", function(req, res){
-  res.render("landing");
+  res.redirect("strains");
 });
 
 // Register form
 router.get("/register", function(req, res){
-  res.render("register");
+  res.render("register", {page: 'register'});
 });
 
 // Handle sign up logic
@@ -30,7 +30,7 @@ router.post("/register", function(req, res){
 
 // Login form
 router.get("/login", function(req, res){
-  res.render("login");
+  res.render("login", {page: 'login'});
 });
 
 // Handle login logic
