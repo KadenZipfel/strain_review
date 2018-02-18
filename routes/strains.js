@@ -25,12 +25,13 @@ router.post("/", middleware.isLoggedIn, function(req, res){
   //Get data from form and add to strains array
   var name = req.body.name;
   var image = req.body.image;
+  var type = req.body.type;
   var desc = req.body.description;
   var author = {
     id: req.user._id,
     username: req.user.username
   }
-  var newStrain = {name: name, image: image, description: desc, author: author};
+  var newStrain = {name: name, image: image, type: type, description: desc, author: author};
   //Create a new strain and save to DB
   Strain.create(newStrain, function(err, newlyCreated){
     if(err){

@@ -11,6 +11,31 @@
         <input class="form-control" type="text" name="strain[image]" value="<%= strain.image %>" autocomplete="off">
       </div>
       <div class="form-group">
+        <select name="strain[type]" class="form-control" value="<%= strain.type %>">
+          <option
+            value="Indica"
+            <% if(strain.type === "Indica"){ %>
+              selected="selected"
+            <% } %>
+            >Indica
+          </option>
+          <option 
+            value="Sativa"
+            <% if(strain.type === "Sativa"){ %>
+              selected="selected"
+            <% } %>
+            >Sativa
+          </option>
+          <option
+            value="Hybrid"
+            <% if(strain.type === "Hybrid"){ %>
+              selected="selected"
+            <% } %>
+            >Hybrid
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
         <input class="form-control" type="text" name="strain[description]" value="<%= strain.description %>" autocomplete="off">
       </div>
       <div class="form-group">
