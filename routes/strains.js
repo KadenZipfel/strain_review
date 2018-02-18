@@ -5,14 +5,30 @@ var express    = require("express"),
 
 // Index Route
 router.get("/", function(req, res){
-  // Get all strains from DB
-  Strain.find({}, function(err, allStrains){
-    if(err){
-      console.log(err);
-    } else {
-      res.render("strains/index", {strains:allStrains});
-    }
-  });
+  var noMatch = null;
+  if(req.query.search){
+    const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+    // Get all strains from DB
+    Strain.find({name: regex}, function(err, allStrains){
+      if(err){
+        console.log(err);
+      } else {
+        if(allStrains.length < 1){
+          noMatch = "Sorry, strain not found.";
+        }
+        res.render("strains/index", {strains:allStrains, noMatch: noMatch});
+      }
+    });
+  } else {
+    // Get all strains from DB
+    Strain.find({}, function(err, allStrains){
+      if(err){
+        console.log(err);
+      } else {
+        res.render("strains/index", {strains:allStrains, noMatch: noMatch});
+      }
+    });
+  }
 });
 
 // New Route
@@ -88,5 +104,9 @@ router.delete("/:id", middleware.checkOwnership, function(req, res){
     }
   });
 });
+
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 module.exports = router;
