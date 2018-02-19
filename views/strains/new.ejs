@@ -1,31 +1,32 @@
 <% include ../partials/header %>
 
-<div class="container">
-  <h1 style="text-align: center;">Add a new strain</h1>
-  <div style="width: 30%; margin: 25px auto;">
-    <form action="/strains" method="POST">
-      <div class="form-group">
-        <input class="form-control" type="text" name="name" placeholder="Name" autocomplete="off">
-      </div>
-      <div class="form-group">
-        <input class="form-control" type="text" name="image" placeholder="Image URL" autocomplete="off">
-      </div>
-      <div class="form-group">
-        <select name="type" class="form-control">
-          <option value="Indica">Indica</option>
-          <option value="Sativa">Sativa</option>
-          <option value="Hybrid">Hybrid</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <input class="form-control" type="text" name="description" placeholder="Description" autocomplete="off">
-      </div>
-      <div class="form-group">
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-      </div>
-    </form>
-    <a href="/strains">Go back</a>
+  <div class="row">
+    <h1 style="text-align: center">Add a new strain</h1>
+    <div style="width: 30%; margin: 25px auto;">
+      <form action="/strains" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <input class="form-control" type="text" name="strain[name]" placeholder="Name">
+        </div>
+        <div class="form-group">
+          <label for="image">Image</label>
+          <input type="file" id="image" name="image" accept="image/*" required>
+        </div>
+        <div class="form-group">
+          <select name="strain[type]" class="form-control">
+            <option value="Indica">Indica</option>
+            <option value="Sativa">Sativa</option>
+            <option value="Hybrid">Hybrid</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="text" name="strain[description]" placeholder="Description">
+        </div>
+        <div class="form-group">
+          <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+        </div>
+      </form>
+      <a href="/strains">Go Back</a>
+    </div>
   </div>
-</div>
 
 <% include ../partials/footer %>

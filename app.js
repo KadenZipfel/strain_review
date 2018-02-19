@@ -12,6 +12,8 @@ var express        = require("express"),
     app            = express();
     
 // Requiring routes
+require('dotenv').config();
+
 var commentRoutes = require("./routes/comments"),
     strainRoutes  = require("./routes/strains"),
     indexRoutes   = require("./routes/index");
