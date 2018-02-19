@@ -9,3 +9,29 @@
 .delete-form {
   display: inline;
 }
+
+.caption h4 a {
+  text-decoration: none;
+  color: #5a5a5a;
+}
+
+.caption h4 a:hover {
+  color: black;
+}
+
+/*Buttons*/
+
+.btn-primary {
+  background-color: #5a5a5a;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #333333;
+  border: none;
+}
+
+.btn-primary:active {
+  background-color: #333333;
+  border: none;
+}

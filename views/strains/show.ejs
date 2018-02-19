@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <p class="lead">CannaReview</p>
+      <p class="lead">CannaReviews</p>
       <div class="list-group">
         <p>Other Strains You May Like:</p>
         <li class="list-group-item">Strain 1</li>
@@ -31,7 +31,7 @@
       </div>
       <div class="well">
         <div class="text-right">
-          <a class="btn btn-success" href="/strains/<%= strain._id %>/comments/new">Add New Comment</a>
+          <a class="btn btn-primary" href="/strains/<%= strain._id %>/comments/new">Add New Comment</a>
         </div>
         <hr>
           <% strain.comments.forEach(function(comment){ %>

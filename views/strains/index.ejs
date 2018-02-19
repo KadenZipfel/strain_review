@@ -6,7 +6,7 @@
       <h1>Welcome to CannaReviews</h1>
     <p>View our most popular strains</p>
     <p>
-      <a class="btn btn-primary" href="/strains/new">Add New Strain</a>
+      <a class="btn btn-primary btn-lg" href="/strains/new">Add New Strain</a>
     </p>
     <p>
       <form action="/strains" method="GET" class="form-inline pull-right">
@@ -30,13 +30,12 @@
     <% strains.forEach(function(strain){ %>
       <div class="col-md-3 col-sm-6">
         <div class="thumbnail">
-          <img src="<%= strain.image %>">
+          <a href="/strains/<%= strain._id %>">
+            <img src="<%= strain.image %>">
+          </a>
           <div class="caption">
-            <h4><%= strain.name %></h4>
+            <h4><a href="/strains/<%= strain._id %>"><%= strain.name %></a></h4>
           </div>
-          <p>
-            <a href="/strains/<%= strain._id %>" class="btn btn-primary">More Info</a>
-          </p>
         </div>
       </div>
     <% }); %>
