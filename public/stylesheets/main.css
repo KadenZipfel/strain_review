@@ -9,6 +9,11 @@ body {
   font-size: 4em;
 }
 
+.thumb-fixed-height {
+  height: 150px;
+  overflow: hidden;
+}
+
 .jumbotron {
   padding: 30px;
 }
