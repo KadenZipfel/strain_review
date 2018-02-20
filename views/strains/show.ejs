@@ -1,16 +1,7 @@
 <% include ../partials/header %>
 
-<div class="container">
+<div class="container row-reverse">
   <div class="row">
-    <div class="col-md-3">
-      <p class="lead">CannaReviews</p>
-      <div class="list-group">
-        <p>Other Strains You May Like:</p>
-        <li class="list-group-item">Strain 1</li>
-        <li class="list-group-item">Strain 2</li>
-        <li class="list-group-item">Strain 3</li>
-      </div>
-    </div>
     <div class="col-md-9">
       <div class="thumbnail">
         <img class="img-responsive" src="<%= strain.image %>">
@@ -21,13 +12,13 @@
           <p>
             <em>Submitted by: <%= strain.author.username %>, <%= moment(strain.createdAt).fromNow() %></em>
           </p>
-          <% if(currentUser && strain.author.id.equals(currentUser._id)) { %>
-            <a class="btn btn-warning btn-xs" href="/strains/<%= strain._id %>/edit">Edit</a>
-            <form class="delete-form" action="/strains/<%= strain._id %>?_method=DELETE" method="POST">
-              <button class="btn btn-danger btn-xs">Delete</button>
-            </form>
-          <% } %>
         </div>
+        <% if(currentUser && strain.author.id.equals(currentUser._id)) { %>
+          <a class="btn btn-primary btn-xs" href="/strains/<%= strain._id %>/edit">Edit</a>
+          <form class="delete-form" action="/strains/<%= strain._id %>?_method=DELETE" method="POST">
+            <button class="btn btn-default btn-xs">Delete</button>
+          </form>
+        <% } %>
       </div>
       <div class="well">
         <div class="text-right">
@@ -52,6 +43,37 @@
             </div>
           </div>
           <% }); %>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="well">
+        <p class="lead">Other strains you may like...</p>
+        <div class="list-group">
+          <div class="thumbnail">
+            <a href="/strains/5a8bc0dfa1ad8b0014fd6897">
+              <img href="/strains/5a8bc0dfa1ad8b0014fd6897" src="https://res.cloudinary.com/kzipfel/image/upload/v1519108277/jcbwwmnc9myxnuc2yu4t.jpg">
+            </a>
+            <div class="caption">
+              <h4><a href="/strains/5a8bc0dfa1ad8b0014fd6897">Green Crack</a></h4>
+            </div>
+          </div>
+          <div class="thumbnail">
+            <a href="/strains/5a8bc109a1ad8b0014fd6898">
+              <img src="https://res.cloudinary.com/kzipfel/image/upload/v1519108361/biugtfx1augqlnzt7jpd.jpg">
+            </a>
+            <div class="caption">
+              <h4><a href="/strains/5a8bc109a1ad8b0014fd6898">OG Kush</a></h4>
+            </div>
+          </div>
+          <div class="thumbnail">
+            <a href="/strains/5a8bdcc186cdd90de9fee1c4">
+              <img src="https://res.cloudinary.com/kzipfel/image/upload/v1519115456/mqyzlmxos9wwcu82bjgz.jpg">
+            </a>
+            <div class="caption">
+              <h4><a href="/strains/5a8bdcc186cdd90de9fee1c4">Blue Dream</a></h4>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

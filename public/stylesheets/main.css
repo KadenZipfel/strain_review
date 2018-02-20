@@ -1,9 +1,43 @@
+body {
+  font-family: 'roboto';
+}
+
+.jumbotron h1 {
+  font-family: "Bebas Neue";
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+
+.navbar .navbar-brand {
+  font-family: "Bebas Neue";
+  font-weight: lighter;
+  font-size: 2em;
+  letter-spacing: 1px;
+}
+
+.bold {
+  font-family: "Bebas Neue";
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+
+.lead {
+  font-family: "Bebas Neue";
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+
 .thumbnail img {
   width: 100%;
 }
 
 .thumbnail {
   padding: 0;
+}
+
+.row-reverse {
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 .delete-form {
@@ -13,6 +47,9 @@
 .caption a {
   text-decoration: none;
   color: #5a5a5a;
+  font-family: 'Bebas Neue';
+  font-weight: normal;
+  font-size: 1.5em;
 }
 
 .caption a:hover {
@@ -34,4 +71,24 @@
 .btn-primary:active {
   background-color: black;
   border: none;
+}
+
+/*Fonts*/
+
+@font-face { 
+	font-family: BebasNeue; 
+	font-weight: bold;
+	src: url('./fonts/BebasNeue Bold.ttf'); 
+}
+
+@font-face { 
+	font-family: BebasNeue; 
+	font-weight: normal;
+	src: url('fonts/BebasNeue Book.ttf'); 
+}
+
+@font-face { 
+	font-family: BebasNeue; 
+	font-weight: lighter;
+	src: url('fonts/BebasNeue Light.ttf'); 
 }
