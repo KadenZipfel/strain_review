@@ -1,21 +1,23 @@
 <% include ../partials/header %>
 
 <div class="container">
-  <header class="jumbotron">
+  <header class="jumbotron text-center">
     <div class="container">
       <h1>Welcome to CannaReviews</h1>
       <p>View our most popular strains</p>
-      <p>
-        <a class="btn btn-primary btn-lg" href="/strains/new">Add New Strain</a>
-      </p>
-      <p>
-        <form action="/strains" method="GET" class="form-inline pull-right">
-          <div class="form-group">
-            <input type="text" name="search" placeholder="Find a strain..." class="form-control">
-            <input type="submit" value="Search" class="btn btn-default">
-          </div>
-        </form>
-      </p>
+      <div class="col-md-4 col-md-offset-4">
+        <p>
+          <a class="btn btn-primary btn-lg" href="/strains/new">Add New Strain</a>
+        </p>
+        <p>
+          <form action="/strains" method="GET" class="form-inline text-center">
+            <div class="form-group">
+              <input type="text" name="search" placeholder="Find a strain..." class="form-control">
+              <input type="submit" value="Search" class="btn btn-default form-control">
+            </div>
+          </form>
+        </p>
+      </div>
     </div>
   </header>
   
