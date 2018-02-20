@@ -21,7 +21,7 @@ var express    = require("express"),
 cloudinary.config({ 
   cloud_name: 'kzipfel', 
   api_key: 476779123835673, 
-  api_secret: process.env.CLOUDINARY_API_SECRET
+  api_secret: process.env.API_SECRET
 });
 
 // Index Route

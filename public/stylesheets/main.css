@@ -22,16 +22,16 @@
 /*Buttons*/
 
 .btn-primary {
-  background-color: #5a5a5a;
+  background-color: #333333;
   border: none;
 }
 
 .btn-primary:hover {
-  background-color: #333333;
+  background-color: black;
   border: none;
 }
 
 .btn-primary:active {
-  background-color: #333333;
+  background-color: black;
   border: none;
 }
