@@ -86,7 +86,7 @@ router.post("/", middleware.isLoggedIn, upload.single('image'), function(req, re
     req.body.strain.author = {
       id: req.user._id,
       username: req.user.username
-    }
+    };
     Strain.create(req.body.strain, function(err, strain) {
       if (err) {
         req.flash('error', err.message);
@@ -114,6 +114,9 @@ router.get("/:id", function(req, res){
 // Edit strain route
 router.get("/:id/edit", middleware.checkOwnership, function(req, res){
   Strain.findById(req.params.id, function(err, foundStrain){
+    if(err){
+      console.log(err);
+    }
     res.render("strains/edit", {strain: foundStrain});
   });
 });
@@ -144,6 +147,6 @@ router.delete("/:id", middleware.checkOwnership, function(req, res){
 
 function escapeRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-};
+}
 
 module.exports = router;

@@ -10,12 +10,12 @@
   display: inline;
 }
 
-.caption h4 a {
+.caption a {
   text-decoration: none;
   color: #5a5a5a;
 }
 
-.caption h4 a:hover {
+.caption a:hover {
   color: black;
 }
 
