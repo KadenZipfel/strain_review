@@ -38,7 +38,6 @@ router.post("/", middleware.isLoggedIn, function(req, res){
           strain.comments.push(comment._id);
           strain.save();
           console.log(comment);
-          req.flash("success", "Comment created!");
           res.redirect("/strains/" + strain._id);
         }
       });

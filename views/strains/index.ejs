@@ -9,14 +9,6 @@
         <p>
           <a class="btn btn-primary" href="/strains/new">Add New Strain</a>
         </p>
-        <p>
-          <form action="/strains" method="GET" class="form-inline text-center">
-            <div class="form-group">
-              <input type="text" name="search" placeholder="Find a strain..." class="form-control">
-              <input type="submit" value="Search" class="btn btn-default form-control">
-            </div>
-          </form>
-        </p>
       </div>
     </div>
   </header>
@@ -44,6 +36,14 @@
       </div>
     <% }); %>
   </div>
+  <p>
+    <form action="/strains" method="GET" class="form-inline text-center">
+      <div class="form-group">
+        <input type="text" name="search" placeholder="Find a strain..." class="form-control">
+        <input type="submit" value="Search" class="btn btn-default form-control">
+      </div>
+    </form>
+  </p>
 </div>
   
 
