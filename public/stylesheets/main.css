@@ -40,6 +40,41 @@ body {
   text-transform: uppercase;
 }
 
+.input-file {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.input-file + label {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: #535353;
+  display: inline-block;
+  padding: 20px;
+  width: 100%;
+  border: 1px dotted steelblue;
+  border-radius: 3px;
+  line-height: 50px;
+}
+
+.input-file:focus + label,
+.input-file + label:hover {
+    background-color: #e0effc;
+}
+
+.input-file + label {
+	cursor: pointer; /* "hand" cursor */
+}
+
+.inputfile:focus + label {
+	outline: 1px dotted #000;
+	outline: -webkit-focus-ring-color auto 5px;
+}
+
 .lead {
   font-family: "Bebas Neue", "Oswald";
   font-weight: normal;
