@@ -88,17 +88,23 @@ body {
 @font-face { 
 	font-family: BebasNeue; 
 	font-weight: bold;
-	src: url('./fonts/BebasNeue Bold.ttf'); 
+	src: url('./fonts/BebasNeue Bold.ttf') format('truetype'),
+       url('bebasneue_bold-webfont.woff2') format('woff2'),
+       url('bebasneue_bold-webfont.woff') format('woff');
 }
 
 @font-face { 
 	font-family: BebasNeue; 
 	font-weight: normal;
-	src: url('fonts/BebasNeue Book.ttf'); 
+	src: url('fonts/BebasNeue Book.ttf') format('truetype'),
+	     url('bebasneue_book-webfont.woff2') format('woff2'),
+       url('bebasneue_book-webfont.woff') format('woff');
 }
 
 @font-face { 
 	font-family: BebasNeue; 
 	font-weight: lighter;
-	src: url('fonts/BebasNeue Light.ttf'); 
+	src: url('fonts/BebasNeue Light.ttf') format('truetype'),
+	     url('bebasneue_light-webfont.woff2') format('woff2'),
+       url('bebasneue_light-webfont.woff') format('woff');
 }
