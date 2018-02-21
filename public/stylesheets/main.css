@@ -90,6 +90,10 @@ body {
   padding: 0;
 }
 
+.login-well {
+  margin-top: 40px;
+}
+
 .row-reverse {
   display: flex;
   flex-direction: row-reverse;

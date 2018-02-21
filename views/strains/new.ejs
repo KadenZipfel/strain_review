@@ -1,31 +1,33 @@
 <% include ../partials/header %>
 
   <div class="row">
-    <h1 style="text-align: center">Add a new strain</h1>
-    <div style="width: 30%; margin: 25px auto;">
-      <form action="/strains" method="POST" enctype="multipart/form-data">
-        <div class="form-group">
-          <input class="form-control" type="text" name="strain[name]" placeholder="Name">
-        </div>
-        <div class="form-group text-center">
-          <input type="file" id="image" name="image" accept="image/*" class="input-file" required>
-          <label for="image">Select Image</label>
-        </div>
-        <div class="form-group">
-          <select name="strain[type]" class="form-control">
-            <option value="Indica">Indica</option>
-            <option value="Sativa">Sativa</option>
-            <option value="Hybrid">Hybrid</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <textarea class="form-control" type="text-area" name="strain[description]" placeholder="Description"></textarea>
-        </div>
-        <div class="form-group">
-          <button class="btn btn-lg btn-primary btn-block">Submit!</button>
-        </div>
-      </form>
-      <a href="/strains">Go Back</a>
+    <div class="col-md-4 col-md-offset-4 col-xs-10 col-xs-offset-1">
+      <div class="well">
+        <h1 style="text-align: center">Add a new strain</h1>
+        <form action="/strains" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <input class="form-control" type="text" name="strain[name]" placeholder="Name">
+          </div>
+          <div class="form-group text-center">
+            <input type="file" id="image" name="image" accept="image/*" class="input-file" required>
+            <label for="image">Select Image</label>
+          </div>
+          <div class="form-group">
+            <select name="strain[type]" class="form-control">
+              <option value="Indica">Indica</option>
+              <option value="Sativa">Sativa</option>
+              <option value="Hybrid">Hybrid</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" type="text-area" name="strain[description]" placeholder="Description"></textarea>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+          </div>
+        </form>
+        <a href="/strains">Go Back</a>
+      </div>
     </div>
   </div>
 
