@@ -3,10 +3,17 @@ body {
 }
 
 .jumbotron h1 {
-  font-family: "Bebas Neue";
+  font-family: "Bebas Neue", "Oswald";
   font-weight: normal;
   letter-spacing: 1px;
   font-size: 4em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 800px){
+  .jumbotron h1 {
+    font-size: 3em;
+  }
 }
 
 .thumb-fixed-height {
@@ -19,22 +26,25 @@ body {
 }
 
 .navbar .navbar-brand {
-  font-family: "Bebas Neue";
+  font-family: "Bebas Neue", "Oswald";
   font-weight: lighter;
   font-size: 2em;
   letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .bold {
-  font-family: "Bebas Neue";
+  font-family: "Bebas Neue", "Oswald";
   font-weight: normal;
   letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .lead {
-  font-family: "Bebas Neue";
+  font-family: "Bebas Neue", "Oswald";
   font-weight: normal;
   letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .thumbnail img {
@@ -57,9 +67,10 @@ body {
 .caption a {
   text-decoration: none;
   color: #5a5a5a;
-  font-family: 'Bebas Neue';
+  font-family: 'Bebas Neue', "Oswald";
   font-weight: normal;
   font-size: 1.5em;
+  text-transform: uppercase;
 }
 
 .caption a:hover {
