@@ -1,5 +1,29 @@
 body {
   font-family: 'roboto';
+  animation: 1s fadeIn;
+}
+
+h1 {
+  animation: 3s slowFadeIn;
+}
+
+@keyframes slowFadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% opacity: 1
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .jumbotron h1 {
@@ -31,6 +55,7 @@ body {
   font-size: 2em;
   letter-spacing: 1px;
   text-transform: uppercase;
+  animation: 3s slowFadeIn;
 }
 
 .bold {
@@ -110,6 +135,7 @@ body {
   font-weight: normal;
   font-size: 1.5em;
   text-transform: uppercase;
+  animation: 3s slowFadeIn;
 }
 
 .caption a:hover {
