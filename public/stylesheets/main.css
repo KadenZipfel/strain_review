@@ -86,7 +86,7 @@ body {
 /*Fonts*/
 
 @font-face { 
-	font-family: BebasNeue; 
+	font-family: Bebas Neue; 
 	font-weight: bold;
 	src: url('fonts/BebasNeue Bold.ttf') format('truetype'),
        url('fonts/bebasneue_bold-webfont.woff2') format('woff2'),
@@ -94,7 +94,7 @@ body {
 }
 
 @font-face { 
-	font-family: BebasNeue; 
+	font-family: Bebas Neue; 
 	font-weight: normal;
 	src: url('fonts/BebasNeue Book.ttf') format('truetype'),
 	     url('fonts/bebasneue_book-webfont.woff2') format('woff2'),
@@ -102,7 +102,7 @@ body {
 }
 
 @font-face { 
-	font-family: BebasNeue; 
+	font-family: Bebas Neue; 
 	font-weight: lighter;
 	src: url('fonts/BebasNeue Light.ttf') format('truetype'),
 	     url('fonts/bebasneue_light-webfont.woff2') format('woff2'),
