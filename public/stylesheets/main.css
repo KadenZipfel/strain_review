@@ -3,10 +3,6 @@ body {
   animation: 1s fadeIn;
 }
 
-h1 {
-  animation: 3s slowFadeIn;
-}
-
 @keyframes slowFadeIn {
   0% {
     opacity: 0;
@@ -14,7 +10,9 @@ h1 {
   50% {
     opacity: 0;
   }
-  100% opacity: 1
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeIn {
@@ -32,6 +30,7 @@ h1 {
   letter-spacing: 1px;
   font-size: 4em;
   text-transform: uppercase;
+  animation: 3s slowFadeIn;
 }
 
 @media (max-width: 800px){

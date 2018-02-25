@@ -9,7 +9,7 @@ var express        = require("express"),
     app            = express();
     
 // Requiring routes
-require('dotenv').config();
+require('dotenv').config({encoding: 'base64'});
 
 var commentRoutes = require("./routes/comments"),
     strainRoutes  = require("./routes/strains"),
