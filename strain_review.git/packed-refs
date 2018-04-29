@@ -1,0 +1,7 @@
+# pack-refs with: peeled fully-peeled 
+b8a36b2c3e2b16523da70bace7851e415399cadb refs/heads/authentication
+caf9714843c566b4c8135eb0e9192168c4b086ea refs/heads/master
+3b9c1c26a18bfa4a2cb1a6a299b4be23026bd260 refs/heads/pages_and_layout
+37f4c88360e2b2a4ef2a593567070decb5ad73c5 refs/heads/styling
+ea29a0880ac3686c686e3ceda8f8ddc2909f03a4 refs/heads/ui_improvements
+90f7dd8a5f750e3bdd4ab7cdb7eef3b30f02287e refs/heads/update_and_destroy

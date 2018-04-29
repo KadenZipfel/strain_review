@@ -1,7 +1,7 @@
 {
-  "name": "strain_review",
+  "name": "VanCanna",
   "version": "1.0.0",
-  "description": "A review application for various strains of cannabis",
+  "description": "A review application for various dispensaries and strains ",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,6 +10,7 @@
   "author": "Kaden Zipfel",
   "license": "ISC",
   "dependencies": {
+    "bfg": "^0.3.0",
     "body-parser": "^1.18.2",
     "cloudinary": "^1.10.0",
     "connect-flash": "^0.1.1",

@@ -2,18 +2,20 @@ var express    = require("express"),
     Strain     = require("../models/strain"),
     middleware = require("../middleware"),
     router     = express.Router(),
-    multer     = require('multer'),
-    storage    = multer.diskStorage({
+    multer     = require('multer');
+    
+var storage    = multer.diskStorage({
       filename: function(req, file, callback) {
         callback(null, Date.now() + file.originalname);
       }
-    }),
-    imageFilter = function (req, file, cb) {
-        // accept image files only
-        if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
-            return cb(new Error('Only image files are allowed!'), false);
-        }
-        cb(null, true);
+    });
+    
+var imageFilter = function (req, file, cb) {
+      // accept image files only
+      if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
+          return cb(new Error('Only image files are allowed!'), false);
+      }
+      cb(null, true);
     },
     upload = multer({ storage: storage, fileFilter: imageFilter}),
     cloudinary = require('cloudinary');

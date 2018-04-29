@@ -30,7 +30,7 @@ body {
   letter-spacing: 1px;
   font-size: 4em;
   text-transform: uppercase;
-  animation: 3s slowFadeIn;
+  animation: 1s slowFadeIn;
 }
 
 @media (max-width: 800px){
@@ -54,7 +54,7 @@ body {
   font-size: 2em;
   letter-spacing: 1px;
   text-transform: uppercase;
-  animation: 3s slowFadeIn;
+  animation: 1s slowFadeIn;
 }
 
 .bold {
@@ -156,30 +156,4 @@ body {
 .btn-primary:active {
   background-color: black;
   border: none;
-}
-
-/*Fonts*/
-
-@font-face { 
-	font-family: Bebas Neue; 
-	font-weight: bold;
-	src: url('fonts/BebasNeue Bold.ttf') format('truetype'),
-       url('fonts/bebasneue_bold-webfont.woff2') format('woff2'),
-       url('fonts/bebasneue_bold-webfont.woff') format('woff');
-}
-
-@font-face { 
-	font-family: Bebas Neue; 
-	font-weight: normal;
-	src: url('fonts/BebasNeue Book.ttf') format('truetype'),
-	     url('fonts/bebasneue_book-webfont.woff2') format('woff2'),
-       url('fonts/bebasneue_book-webfont.woff') format('woff');
-}
-
-@font-face { 
-	font-family: Bebas Neue; 
-	font-weight: lighter;
-	src: url('fonts/BebasNeue Light.ttf') format('truetype'),
-	     url('fonts/bebasneue_light-webfont.woff2') format('woff2'),
-       url('fonts/bebasneue_light-webfont.woff') format('woff');
 }
