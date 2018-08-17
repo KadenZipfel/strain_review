@@ -16,7 +16,6 @@ var commentRoutes = require("./routes/comments"),
     indexRoutes   = require("./routes/index");
     
 // mongoose.connect("mongodb://localhost/cannareviews");
-mongoose.connect("mongodb://kadenzipfel:password123@ds241658.mlab.com:41658/cannareviews");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
